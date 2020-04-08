@@ -16,14 +16,11 @@ const renderHtml = (input, Route, node, allNodes) => {
   return Comp.render(props);
 };
 
-//const makeHtmlWithStyle = (inputs, Route, node, allNodes) =>
-const makeHtmlWithStyle = inputs =>
-  //inputs.forEach(input 
+const makeHtml = inputs =>
   inputs
-    //.map(input => renderHtml(input, Route, node, allNodes))
     .map(input => renderHtml(input.src, input.route, input.node, input.nodes))
     .map(rendered =>
       injectIntoHead(`\n<style>${rendered.css.code}</style>\n`)(rendered.html),
     );
 
-export default makeHtmlWithStyle;
+export default makeHtml;
