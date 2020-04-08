@@ -1,8 +1,8 @@
 <script>
   import Head from './Head.svelte';
-import Nav from './Nav.svelte';
+  import Nav from './Nav.svelte';
 
-export let Route, node, allNodes;
+  export let Route, node, allNodes;
 
   const makeTitle = filename => {
   if (filename == '_index.json') {
