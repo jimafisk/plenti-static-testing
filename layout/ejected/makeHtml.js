@@ -1,7 +1,7 @@
-const {injectIntoHead} = require('./inject.js');
-const relative = require('require-relative');
+import injectIntoHead from './inject.js';
+import relative from 'require-relative';
 
-require('svelte/register');
+import 'svelte/register.js';
 
 const renderHtml = input => {
   /* eslint-disable-next-line global-require */
@@ -9,10 +9,11 @@ const renderHtml = input => {
   return Comp.render();
 };
 
-module.exports.makeHtmlWithStyle = inputs =>
+const makeHtmlWithStyle = inputs =>
   inputs
     .map(renderHtml)
     .map(rendered =>
       injectIntoHead(`\n<style>${rendered.css.code}</style>\n`)(rendered.html),
     );
 
+export default makeHtmlWithStyle;

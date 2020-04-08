@@ -1,18 +1,18 @@
-const {makeHtmlWithStyle} = require('./makeHtml.js');                     
+import makeHtmlWithStyle from './makeHtml.js';
 
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
 
 const io = [
   {src: 'Index.svelte', dest: 'index.html'},
 ].map(x => ({
-  src: path.join(__dirname, '../content/', x.src),
-  dest: path.join(__dirname, '../../public/testout', x.dest),
+  src: path.join(path.resolve(), 'layout/content/', x.src),
+  dest: path.join(path.resolve(), 'public/testout', x.dest),
 }));
 
 const main = () =>
   fs.promises
-    .mkdir(path.join(__dirname, '../../public/testout'), {recursive: true})
+    .mkdir(path.join(path.resolve(), 'public/testout'), {recursive: true})
 
     .then(() =>
       Promise.all(
@@ -22,8 +22,4 @@ const main = () =>
       ),
     );
 
-if (require.main === module) {
-  main();
-} else {
-  module.exports = {build: main, io};
-}
+main();
