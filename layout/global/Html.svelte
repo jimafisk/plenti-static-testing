@@ -1,6 +1,7 @@
 <script>
   import Head from './Head.svelte';
   import Nav from './Nav.svelte';
+  import Pages from '../content/Pages.svelte';
 
   export let Route, node, allNodes;
 
@@ -24,7 +25,10 @@
 <body>
   <Nav />
   <main>
+    <h1>{node.filename}{Route}</h1>
+    <!--
     <svelte:component this={Route} {...node.fields} {allNodes} />
+    -->
   </main>
 </body>
 </html>
