@@ -1,6 +1,10 @@
-const makeInjectString = beforeString => content => html =>
-  html.replace(beforeString, content + beforeString);
+const prependString = elementString => content => html =>
+  html.replace(elementString, content + elementString);
 
-const injectIntoHead = makeInjectString('</head>');
+const appendString = elementString => content => html =>
+  html.replace(elementString, elementString + content);
 
-export default injectIntoHead;
+const injectIntoHead = prependString('</head>');
+const injectHtmlAttribute = appendString('<html');
+
+export {injectIntoHead, injectHtmlAttribute};

@@ -11,14 +11,11 @@
 <body>
   <Nav />
   <main>
-    <h1>{node.filename}</h1>
     <details>
       <summary>Click to show Route class</summary>
       <pre>{Route}</pre>
     </details>
     <svelte:component this={Route} {...node.fields} {allNodes} />
-    <!--
-    -->
   </main>
 </body>
 </html>
