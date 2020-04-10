@@ -32,7 +32,7 @@ nodes.forEach(node => {
   console.log('route is: ' + route);
   io.push({
     src: path.join(path.resolve(), 'layout/global/Html.svelte'),
-    dest: path.join(path.resolve(), 'public/testout/' + filename),
+    dest: path.join(path.resolve(), 'public/' + filename),
     route: route,
     node: node,
     nodes: nodes
@@ -42,7 +42,7 @@ nodes.forEach(node => {
 const main = () =>
   fs.promises
     // Create the output directory if it doesn't already exist.
-    .mkdir(path.join(path.resolve(), 'public/testout'), {recursive: true})
+    .mkdir(path.join(path.resolve(), 'public'), {recursive: true})
 
     .then(() =>
       Promise.all(
