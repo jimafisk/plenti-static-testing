@@ -1,7 +1,7 @@
 <script>
-  import Head from './Head.svelte';
-  import Nav from './Nav.svelte';
-  import { makeTitle } from './Scripts.svelte';
+  import Head from './head.svelte';
+  import Nav from './nav.svelte';
+  import { makeTitle } from './scripts.svelte';
 
   export let Route, node, allNodes;
 </script>

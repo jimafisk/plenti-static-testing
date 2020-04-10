@@ -1,4 +1,4 @@
-import makeHtml from './makeHtml.js';
+import makeHtml from './make_html.js';
 import path from 'path';
 import fs from 'fs';
 import nodes from './nodes.js';
@@ -31,7 +31,7 @@ nodes.forEach(node => {
   let route = Pages;
   console.log('route is: ' + route);
   io.push({
-    src: path.join(path.resolve(), 'layout/global/Html.svelte'),
+    src: path.join(path.resolve(), 'layout/global/html.svelte'),
     dest: path.join(path.resolve(), 'public/' + filename),
     route: route,
     node: node,

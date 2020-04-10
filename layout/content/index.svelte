@@ -1,7 +1,7 @@
 <script>
 	export let name;
 	export let allNodes;
-  import Component from './Component.svelte';
+  import Component from './component.svelte';
 </script>
 
 <section id="intro">
