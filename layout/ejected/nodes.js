@@ -48,7 +48,7 @@ const nodes = [
     },
     {
         "path": "/",
-        "type": "",
+        "type": "index",
         "filename": "_index.json",
         "fields": {
             "name": "Plenti"

@@ -5,15 +5,12 @@ import 'svelte/register.js';
 
 const renderHtml = (input, Route, node, allNodes) => {
   /* eslint-disable-next-line global-require */
-  const Comp = relative(input, process.cwd()).default;
-  console.log('route is: ' + Route);
-  console.log('node is: ' + JSON.stringify(node));
-  console.log('All nodes are: ' + JSON.stringify(allNodes));
+  const component = relative(input, process.cwd()).default;
   let props = {};
   props.Route = Route;
   props.node = node;
   props.allNodes = allNodes;
-  return Comp.render(props);
+  return component.render(props);
 };
 
 const makeHtml = inputs =>
