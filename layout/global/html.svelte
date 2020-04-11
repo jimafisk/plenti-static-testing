@@ -1,6 +1,7 @@
 <script>
   import Head from './head.svelte';
   import Nav from './nav.svelte';
+  import Footer from './footer.svelte';
   import { makeTitle } from './scripts.svelte';
 
   export let Route, node, allNodes;
@@ -11,11 +12,37 @@
 <body>
   <Nav />
   <main>
-    <details>
-      <summary>Click to show Route class</summary>
-      <pre>{Route}</pre>
-    </details>
-    <svelte:component this={Route} {...node.fields} {allNodes} />
+    <div class="container">
+      <svelte:component this={Route} {...node.fields} {allNodes} />
+      <br />
+      <details>
+        <summary>Click to show Route class</summary>
+        <pre>{Route}</pre>
+      </details>
+    </div>
   </main>
+  <Footer {allNodes} />
 </body>
 </html>
+
+<style>
+  body {
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  main {
+    flex-grow: 1;
+  }
+  :global(.container) {
+    max-width: 1024px;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+  :global(:root) {
+    --primary: (50, 50, 50);
+    --accent: rgb(1, 1, 1);
+    --base: rgb(245, 245, 245);
+  }
+</style>

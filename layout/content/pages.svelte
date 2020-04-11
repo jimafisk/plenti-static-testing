@@ -1,17 +1,12 @@
 <script>
-	export let allNodes;
 	export let title, description;
 </script>
 
 <h1>{title}</h1>
-<p>Pages template</p>
-<a href="/">Back home</a>
+<p><em>Page template</em></p>
 <div>
-<strong>Title:</strong><span>{title}</span>
-<strong>Desc:</strong><span>{description}</span>
+  <div><strong>Title: </strong><span>{title}</span></div>
+  <div><strong>Desc: </strong><span>{description}</span></div>
 </div>
 
-<h3>All nodes test:</h3>
-{#each allNodes as node}
-	<a href="{node.path}">{node.fields.title}</a>
-{/each}
+<p><a href="/">Back home</a></p>
