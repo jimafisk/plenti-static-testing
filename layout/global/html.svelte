@@ -2,7 +2,7 @@
   import Head from './head.svelte';
   import Nav from './nav.svelte';
   import Footer from './footer.svelte';
-  import { makeTitle } from './scripts.svelte';
+  import { makeTitle } from '../scripts/make_title.svelte';
 
   export let Route, node, allNodes;
 </script>

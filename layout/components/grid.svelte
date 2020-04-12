@@ -4,7 +4,7 @@
 
 <div class="grid">
   {#each allNodes as node}
-		{#if node.type == 'blog'}
+		{#if node.type == 'blog_posts'}
       <a class="grid-item" href="{node.path}">{node.fields.title}</a>
 		{/if}
   {/each}

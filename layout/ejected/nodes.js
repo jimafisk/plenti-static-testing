@@ -3,7 +3,7 @@
 const nodes = [
     {
         "path": "/blog/post1",
-        "type": "blog",
+        "type": "blog_posts",
         "filename": "post1.json",
         "fields": {
             "title": "Post 1",
@@ -12,7 +12,7 @@ const nodes = [
     },
     {
         "path": "/blog/post2",
-        "type": "blog",
+        "type": "blog_posts",
         "filename": "post2.json",
         "fields": {
             "title": "Post 2",
@@ -21,7 +21,7 @@ const nodes = [
     },
     {
         "path": "/blog/post3",
-        "type": "blog",
+        "type": "blog_posts",
         "filename": "post-3_has_a_long_filename.json",
         "fields": {
             "title": "Post 3",
