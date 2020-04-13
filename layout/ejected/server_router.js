@@ -5,13 +5,11 @@ import 'svelte/register.js';
 import relative from 'require-relative';
 
 const injectString = (order, content, element, html) => {
-  if (html) {
-		if (order == 'prepend') {
-			html.replace(element, content + element);
-		} else if (order == 'append') {
-			html.replace(element, element + content);
-		}
-  }
+	if (order == 'prepend') {
+		return html.replace(element, content + element);
+	} else if (order == 'append') {
+		return html.replace(element, element + content);
+	}
 };
 
 nodes.forEach(node => {
