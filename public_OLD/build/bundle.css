@@ -1,0 +1,6 @@
+.grid.svelte-v5lmdn{display:grid;grid-template-columns:repeat(3, 1fr);grid-column-gap:10px;grid-row-gap:10px}.grid-item.svelte-v5lmdn{display:flex;flex-grow:1;height:200px;background:var(--base);align-items:center;justify-content:center}
+footer.svelte-n69rq5{min-height:200px;display:flex;align-items:center;background-color:var(--base);margin-top:100px}
+body.svelte-8fbqk6{font-family:'Rubik', sans-serif;display:flex;flex-direction:column;margin:0}main.svelte-8fbqk6{flex-grow:1}.container{max-width:1024px;margin:0 auto;flex-grow:1}:root{--primary:(50, 50, 50);--accent:rgb(1, 1, 1);--base:rgb(245, 245, 245)}
+nav.svelte-1pz3ylm{min-height:60px;display:flex;align-items:center;box-shadow:0px 2px 3px var(--base)}.container.svelte-1pz3ylm{display:flex}#brand.svelte-1pz3ylm{flex:1}
+
+/*# sourceMappingURL=bundle.css.map */
