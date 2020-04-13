@@ -1,11 +1,11 @@
 <script>
-  export let allNodes;
+  export let items, filter;
 </script>
 
 <div class="grid">
-  {#each allNodes as node}
-		{#if node.type == 'blog_posts'}
-      <a class="grid-item" href="{node.path}">{node.fields.title}</a>
+  {#each items as item}
+		{#if item.type == filter}
+      <a class="grid-item" href="{item.path}">{item.fields.title}</a>
 		{/if}
   {/each}
 </div>

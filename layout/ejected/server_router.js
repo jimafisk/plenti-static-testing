@@ -12,11 +12,21 @@ const injectString = (order, content, element, html) => {
 	}
 };
 
+function ensureDirectoryExistence(filePath) {
+    var dirname = path.dirname(filePath);
+    if (fs.existsSync(dirname)) {
+          return true;
+        }
+    ensureDirectoryExistence(dirname);
+    fs.mkdirSync(dirname);
+}
+
 nodes.forEach(node => {
   let sourceFilename = node.type + '.svelte';
   let sourcePath = path.join(path.resolve(), 'layout/content/' + sourceFilename);
   let sourceComponent = fs.readFileSync(sourcePath, 'utf8');
-  let destFilename = node.filename.substr(0, node.filename.lastIndexOf(".")) + ".html";
+  //let destFilename = node.filename.substr(0, node.filename.lastIndexOf(".")) + ".html";
+  let destFilename = node.path + ".html";
   let destPath = path.join(path.resolve(), 'public/' + destFilename);
   let topLevelComponent = path.join(path.resolve(), 'layout/global/html.svelte');
   const route = relative(sourcePath, process.cwd()).default;
@@ -41,6 +51,8 @@ nodes.forEach(node => {
   let hydrator = ' id="hydrate-plenti"';
   html = injectString('append', hydrator, '<html', html);
   // Write HTML files to filesystem.
-  fs.promises.mkdir(path.join(path.resolve(), 'public'), {recursive: true})
+  //fs.promises.mkdir(path.join(path.resolve(), 'public'), {recursive: true})
+  //fs.promises.mkdir(path.join(path.resolve(), destPath), {recursive: true})
+  ensureDirectoryExistence(destPath);
   fs.promises.writeFile(destPath, html);
 });

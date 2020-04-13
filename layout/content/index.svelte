@@ -8,5 +8,5 @@
 <section id="intro">
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	<h3>Recent blog posts:</h3>
-  <Grid {allNodes} />
+  <Grid items={allNodes} filter="blog" />
 </section>
