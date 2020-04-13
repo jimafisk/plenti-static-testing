@@ -49,7 +49,7 @@ const nodes = [
     {
         "path": "/",
         "type": "index",
-        "filename": "_index.json",
+        "filename": "index.json",
         "fields": {
             "name": "Plenti"
         }

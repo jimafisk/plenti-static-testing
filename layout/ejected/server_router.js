@@ -21,7 +21,7 @@ nodes.forEach(node => {
   let topLevelComponent = path.join(path.resolve(), 'layout/global/html.svelte');
   const route = relative(sourcePath, process.cwd()).default;
   let props = {
-    route: route,
+    Route: route,
     node: node,
     allNodes: nodes
   };
