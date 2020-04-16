@@ -26,13 +26,6 @@ import Nav from "./nav.js";
 import Footer from "./footer.js";
 import { makeTitle } from "../scripts/make_title.js";
 
-function add_css() {
-	var style = element("style");
-	style.id = "svelte-8fbqk6-style";
-	style.textContent = "body.js-8fbqk6{font-family:'Rubik', sans-serif;display:flex;flex-direction:column;margin:0}main.js-8fbqk6{flex-grow:1}.container{max-width:1024px;margin:0 auto;flex-grow:1}:root{--primary:(50, 50, 50);--accent:rgb(1, 1, 1);--base:rgb(245, 245, 245)}";
-	append(document.head, style);
-}
-
 function create_fragment(ctx) {
 	let html;
 	let t0;
@@ -191,7 +184,6 @@ function instance($$self, $$props, $$invalidate) {
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-8fbqk6-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal, { Route: 0, node: 1, allNodes: 2 });
 	}
 }

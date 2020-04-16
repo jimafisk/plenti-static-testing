@@ -49,7 +49,8 @@ sPaths.forEach(sPath => {
   }
   let spaSourcePath = path.join(path.resolve(), 'layout/' + sPath);
 	let spaSourceComponent = fs.readFileSync(spaSourcePath, 'utf8');
-	let { js } = svelte.compile(spaSourceComponent, {
+	let { js, css } = svelte.compile(spaSourceComponent, {
+    css: false
 	});
 	let spaDestPath = 'public/spa/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
   js.code = js.code.replace(/\.svelte/g, '.js');
@@ -57,6 +58,9 @@ sPaths.forEach(sPath => {
   js.code = js.code.replace(/from "svelte"\;/g, 'from "../web_modules/svelte.js";');
   js.code = js.code.replace(/from "navaid"\;/g, 'from "../web_modules/navaid.js";');
 	ensureDirExists(spaDestPath);
+  if (css.code != 'null') {
+    fs.appendFileSync('public/spa/bundle.css', css.code);
+  }
 	fs.promises.writeFile(spaDestPath, js.code);
 });
 // End client

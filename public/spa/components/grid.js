@@ -15,13 +15,6 @@ import {
 	text
 } from "../web_modules/svelte/internal/index.js";
 
-function add_css() {
-	var style = element("style");
-	style.id = "svelte-v5lmdn-style";
-	style.textContent = ".grid.js-v5lmdn{display:grid;grid-template-columns:repeat(3, 1fr);grid-column-gap:10px;grid-row-gap:10px}.grid-item.js-v5lmdn{display:flex;flex-grow:1;height:200px;background:var(--base);align-items:center;justify-content:center}";
-	append(document.head, style);
-}
-
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
 	child_ctx[2] = list[i];
@@ -167,7 +160,6 @@ function instance($$self, $$props, $$invalidate) {
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-v5lmdn-style")) add_css();
 		init(this, options, instance, create_fragment, safe_not_equal, { items: 0, filter: 1 });
 	}
 }
