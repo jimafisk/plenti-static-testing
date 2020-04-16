@@ -32,6 +32,9 @@ const ensureDirExists = filePath => {
 //let spaSourcePath = path.join(path.resolve(), 'layout/ejected/client_router.svelte');
 let sPaths = []; 
 sPaths.push('ejected/client_router.svelte');
+sPaths.push('ejected/main.js');
+sPaths.push('ejected/nodes.js');
+sPaths.push('ejected/data_source.js');
 sPaths.push('global/html.svelte');
 sPaths.push('global/nav.svelte');
 sPaths.push('global/head.svelte');
@@ -42,13 +45,22 @@ sPaths.push('content/blog.svelte');
 sPaths.push('components/grid.svelte');
 sPaths.push('scripts/make_title.svelte');
 sPaths.forEach(sPath => {
+  let extension = sPath.substring(sPath.lastIndexOf('.')+1, sPath.length);
+  console.log(extension);
+  if (extension == 'js') {
+    let sDest = 'public/.spa/' + sPath;
+		ensureDirExists(sDest);
+    fs.copyFile('layout/' + sPath, sDest, (err) => {
+        if (err) throw err;
+        console.log('File was copied to destination');
+    });
+    return;
+  }
   let spaSourcePath = path.join(path.resolve(), 'layout/' + sPath);
 	let spaSourceComponent = fs.readFileSync(spaSourcePath, 'utf8');
-	//spaSourceComponent = relative(spaSourceComponent, process.cwd()).default;
 	let { js } = svelte.compile(spaSourceComponent, {
 	});
-	let spaDestPath = 'public/special/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
-	//let spaDestPath = 'public/special/main.js';
+	let spaDestPath = 'public/.spa/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
   js.code = js.code.replace(/\.svelte/g, '.js');
   js.code = js.code.replace(/from "svelte\/internal"\;/g, 'from "../web_modules/svelte/internal.js";');
   js.code = js.code.replace(/from "svelte"\;/g, 'from "../web_modules/svelte.js";');
@@ -78,8 +90,8 @@ nodes.forEach(node => {
   html = injectString('prepend', style, '</head>', html);
   // Inject SPA entry point.
   let entryPoint = `
-  <script type="module" src="https://unpkg.com/dimport?module" data-main="/special/ejected/main.js"></script>
-  <script nomodule src="https://unpkg.com/dimport/nomodule" data-main="/special/ejected/main.js"></script>
+  <script type="module" src="https://unpkg.com/dimport?module" data-main="/.spa/ejected/main.js"></script>
+  <script nomodule src="https://unpkg.com/dimport/nomodule" data-main="/.spa/ejected/main.js"></script>
 	`;
   html = injectString('prepend', entryPoint, '</head>', html);
   // Inject ID used to hydrate SPA.
