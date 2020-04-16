@@ -19,7 +19,7 @@ import {
 	space,
 	transition_in,
 	transition_out
-} from "../web_modules/svelte/internal.js";
+} from "../web_modules/svelte/internal/index.js";
 
 import Head from "./head.js";
 import Nav from "./nav.js";

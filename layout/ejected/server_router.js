@@ -5,13 +5,6 @@ import 'svelte/register.js';
 import relative from 'require-relative';
 import svelte from 'svelte/compiler.js';
 
-//const result = svelte.compile('./main.js', {
-//const result = svelte.compile('./client_router.svelte', {
-//const result = svelte.compile('../layout/html.svelte', {
-//let sourcePath = path.join(path.resolve(), 'layout/content/' + sourceFilename);
-//let srcPath = path.join(path.resolve(), 'layout/content/pages.svelte');
-//let source = fs.readFile(srcPath, 'utf8');
-
 const injectString = (order, content, element, html) => {
 	if (order == 'prepend') {
 		return html.replace(element, content + element);
@@ -29,7 +22,6 @@ const ensureDirExists = filePath => {
 	fs.mkdirSync(dirname);
 }
 // Start client
-//let spaSourcePath = path.join(path.resolve(), 'layout/ejected/client_router.svelte');
 let sPaths = []; 
 sPaths.push('ejected/client_router.svelte');
 sPaths.push('ejected/main.js');
@@ -46,13 +38,12 @@ sPaths.push('components/grid.svelte');
 sPaths.push('scripts/make_title.svelte');
 sPaths.forEach(sPath => {
   let extension = sPath.substring(sPath.lastIndexOf('.')+1, sPath.length);
-  console.log(extension);
   if (extension == 'js') {
     let sDest = 'public/spa/' + sPath;
 		ensureDirExists(sDest);
     fs.copyFile('layout/' + sPath, sDest, (err) => {
         if (err) throw err;
-        console.log('File was copied to destination');
+        //console.log('File was copied to destination');
     });
     return;
   }
@@ -62,7 +53,7 @@ sPaths.forEach(sPath => {
 	});
 	let spaDestPath = 'public/spa/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
   js.code = js.code.replace(/\.svelte/g, '.js');
-  js.code = js.code.replace(/from "svelte\/internal"\;/g, 'from "../web_modules/svelte/internal.js";');
+  js.code = js.code.replace(/from "svelte\/internal"\;/g, 'from "../web_modules/svelte/internal/index.js";');
   js.code = js.code.replace(/from "svelte"\;/g, 'from "../web_modules/svelte.js";');
   js.code = js.code.replace(/from "navaid"\;/g, 'from "../web_modules/navaid.js";');
 	ensureDirExists(spaDestPath);

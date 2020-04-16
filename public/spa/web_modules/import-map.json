@@ -1,6 +1,6 @@
 {
   "imports": {
     "navaid": "./navaid.js",
-    "svelte": "./svelte.js"
+    "svelte/internal/index.js": "./svelte/internal/index.js"
   }
 }

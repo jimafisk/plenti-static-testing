@@ -14,7 +14,7 @@ import {
 	set_data,
 	space,
 	text
-} from "../web_modules/svelte/internal.js";
+} from "../web_modules/svelte/internal/index.js";
 
 function add_css() {
 	var style = element("style");

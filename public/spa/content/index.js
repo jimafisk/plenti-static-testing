@@ -16,7 +16,7 @@ import {
 	text,
 	transition_in,
 	transition_out
-} from "../web_modules/svelte/internal.js";
+} from "../web_modules/svelte/internal/index.js";
 
 import Grid from "../components/grid.js";
 

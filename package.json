@@ -7,11 +7,11 @@
   },
   "devDependencies": {
     "sirv-cli": "^0.4.4",
+    "require-relative": "^0.8.7",
     "snowpack": "^1.6.0"
   },
   "dependencies": {
     "navaid": "^1.0.5",
-    "svelte": "^3.0.0",
-    "require-relative": "^0.8.7"
+    "svelte": "^3.0.0"
   }
 }

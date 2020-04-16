@@ -8,12 +8,10 @@ import {
 	safe_not_equal,
 	transition_in,
 	transition_out
-} from "../web_modules/svelte/internal.js";
+} from "../web_modules/svelte/internal/index.js";
 
 import Navaid from "../web_modules/navaid.js";
 import DataSource from "./data_source.js";
-
-//import { onDestroy } from 'svelte';
 import Html from "../global/html.js";
 
 function create_fragment(ctx) {
