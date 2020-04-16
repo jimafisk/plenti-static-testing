@@ -58,7 +58,7 @@ sPaths.forEach(sPath => {
   js.code = js.code.replace(/from "svelte"\;/g, 'from "../web_modules/svelte.js";');
   js.code = js.code.replace(/from "navaid"\;/g, 'from "../web_modules/navaid.js";');
 	ensureDirExists(spaDestPath);
-  if (css.code != 'null') {
+  if (css.code && css.code != 'null') {
     fs.appendFileSync('public/spa/bundle.css', css.code);
   }
 	fs.promises.writeFile(spaDestPath, js.code);
