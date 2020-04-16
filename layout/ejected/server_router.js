@@ -48,7 +48,7 @@ sPaths.forEach(sPath => {
   let extension = sPath.substring(sPath.lastIndexOf('.')+1, sPath.length);
   console.log(extension);
   if (extension == 'js') {
-    let sDest = 'public/.spa/' + sPath;
+    let sDest = 'public/spa/' + sPath;
 		ensureDirExists(sDest);
     fs.copyFile('layout/' + sPath, sDest, (err) => {
         if (err) throw err;
@@ -60,7 +60,7 @@ sPaths.forEach(sPath => {
 	let spaSourceComponent = fs.readFileSync(spaSourcePath, 'utf8');
 	let { js } = svelte.compile(spaSourceComponent, {
 	});
-	let spaDestPath = 'public/.spa/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
+	let spaDestPath = 'public/spa/' + sPath.substr(0, sPath.lastIndexOf(".")) + ".js";
   js.code = js.code.replace(/\.svelte/g, '.js');
   js.code = js.code.replace(/from "svelte\/internal"\;/g, 'from "../web_modules/svelte/internal.js";');
   js.code = js.code.replace(/from "svelte"\;/g, 'from "../web_modules/svelte.js";');
@@ -90,8 +90,8 @@ nodes.forEach(node => {
   html = injectString('prepend', style, '</head>', html);
   // Inject SPA entry point.
   let entryPoint = `
-  <script type="module" src="https://unpkg.com/dimport?module" data-main="/.spa/ejected/main.js"></script>
-  <script nomodule src="https://unpkg.com/dimport/nomodule" data-main="/.spa/ejected/main.js"></script>
+  <script type="module" src="https://unpkg.com/dimport?module" data-main="/spa/ejected/main.js"></script>
+  <script nomodule src="https://unpkg.com/dimport/nomodule" data-main="/spa/ejected/main.js"></script>
 	`;
   html = injectString('prepend', entryPoint, '</head>', html);
   // Inject ID used to hydrate SPA.

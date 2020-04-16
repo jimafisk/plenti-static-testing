@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "navaid": "./navaid.js",
+    "svelte": "./svelte.js"
+  }
+}
