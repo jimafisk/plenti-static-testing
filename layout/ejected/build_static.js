@@ -2,7 +2,7 @@ import 'svelte/register.js';
 import relative from 'require-relative';
 
 // Get the arguments from command execution.
-const args = process.argv.slice(2)
+let args = process.argv.slice(2)
 
 // args[0] is the path to /layout/global/html.svelte.
 const component = relative(args[0], process.cwd()).default;
