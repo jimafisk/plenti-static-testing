@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "navaid": "^1.0.5",
-    "svelte": "^3.0.0"
+    "svelte": "^3.49.0"
   }
 }
